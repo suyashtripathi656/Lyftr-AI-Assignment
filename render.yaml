@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: llm-chatbot-backend
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    region: oregon
+    plan: starter
+    disk:
+      name: chatbot-data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: LLM_API_KEYS
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: ENABLE_FAILURE_SIMULATION
+        value: "true"
+      - key: DATABASE_URL
+        value: "sqlite:////data/app.db"
+      - key: CACHE_DIR
+        value: "/data/cache"
+      - key: LLM_MODEL
+        value: "gemini/gemini-2.0-flash"
+    healthCheckPath: /health
