@@ -34,9 +34,16 @@ class Settings:
         self.database_url: str = os.environ.get("DATABASE_URL", "sqlite:////data/app.db")
         # Extract the file path from the URL
         if self.database_url.startswith("sqlite:///"):
-            self.db_path: str = self.database_url.replace("sqlite:///", "", 1)
+            raw_path = self.database_url.replace("sqlite:///", "", 1)
         else:
-            self.db_path = self.database_url
+            raw_path = self.database_url
+
+        # On Windows, if path is /data/... map it to the local workspace ./data/...
+        if os.name == "nt" and (raw_path.startswith("/data") or raw_path.startswith("\\data")):
+            clean_rel = raw_path.lstrip("/\\")
+            self.db_path: str = str((Path(__file__).resolve().parent.parent.parent / clean_rel).resolve())
+        else:
+            self.db_path = raw_path
 
         # --- CORS ------------------------------------------------------------
         raw_origins = os.environ.get("ALLOWED_ORIGINS", "http://localhost:3000")
@@ -55,7 +62,12 @@ class Settings:
         )
 
         # --- Cache -----------------------------------------------------------
-        self.cache_dir: str = os.environ.get("CACHE_DIR", "/data/cache")
+        raw_cache = os.environ.get("CACHE_DIR", "/data/cache")
+        if os.name == "nt" and (raw_cache.startswith("/data") or raw_cache.startswith("\\data")):
+            clean_cache = raw_cache.lstrip("/\\")
+            self.cache_dir: str = str((Path(__file__).resolve().parent.parent.parent / clean_cache).resolve())
+        else:
+            self.cache_dir = raw_cache
 
         # --- History ---------------------------------------------------------
         self.max_history_messages: int = int(
