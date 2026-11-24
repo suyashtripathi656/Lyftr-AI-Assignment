@@ -45,7 +45,7 @@ flowchart LR
 
 ```bash
 # 1. Clone the repo
-git clone <repo-url> && cd llm-chatbot
+git clone https://github.com/suyashtripathi656/Lyftr-AI-Assignment.git && cd Lyftr-AI-Assignment
 
 # 2. Create .env from the template
 cp .env.example .env
