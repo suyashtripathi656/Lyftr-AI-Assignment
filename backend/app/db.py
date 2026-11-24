@@ -165,6 +165,11 @@ def save_exchange(
             (session_id, "assistant", assistant_content, json.dumps(metadata), now),
         )
         conn.commit()
+        # Flush WAL pages to main db file so visual SQLite viewers see updates immediately
+        try:
+            conn.execute("PRAGMA wal_checkpoint(PASSIVE)")
+        except Exception:
+            pass
     except Exception:
         conn.rollback()
         raise
