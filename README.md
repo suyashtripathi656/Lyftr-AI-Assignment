@@ -32,10 +32,8 @@ flowchart LR
 
 | Service  | URL |
 |----------|-----|
-| Frontend | `https://your-frontend.vercel.app` |
-| Backend  | `https://your-backend.onrender.com` |
-
-> Replace with your actual deployed URLs after deployment.
+| Frontend (Vercel) | [https://ai-assignment-uobr.vercel.app](https://ai-assignment-uobr.vercel.app) |
+| Backend (Render)  | [https://llm-chatbot-backend-xgox.onrender.com](https://llm-chatbot-backend-xgox.onrender.com) |
 
 ---
 
