@@ -1,4 +1,4 @@
-.PHONY: up down logs test clean
+.PHONY: up down logs test clean smoke-test
 
 up:
 	docker compose up --build -d
@@ -11,6 +11,9 @@ logs:
 
 test:
 	cd backend && pip install -r requirements.txt -q && python -m pytest tests/ -v
+
+smoke-test:
+	bash backend/scripts/smoke_test.sh $(or $(URL),http://localhost:8000)
 
 clean:
 	docker compose down -v --rmi local

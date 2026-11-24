@@ -240,4 +240,4 @@ curl http://localhost:8000/sessions/nonexistent/messages
 | **Error boundary** | React error boundary prevents blank screens on crashes |
 | **Responsive design** | Works on mobile and desktop |
 | **System prompt per session** | Optional system prompt override via the UI |
-| **Smoke test script** | Automated end-to-end contract verification (`scripts/smoke_test.sh`) |
+| **Smoke test script** | Automated end-to-end contract verification (`make smoke-test` or `bash backend/scripts/smoke_test.sh`) |
