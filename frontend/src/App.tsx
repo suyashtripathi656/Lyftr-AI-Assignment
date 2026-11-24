@@ -77,7 +77,7 @@ function Sidebar({
   if (collapsed) return null;
 
   return (
-    <div className="w-64 h-screen flex flex-col border-r bg-[#f5f0e8]" style={{ borderColor: 'var(--border)' }}>
+    <div className="w-64 h-screen flex flex-col border-r bg-[#ddd5c8]" style={{ borderColor: 'var(--border)' }}>
       {/* Sidebar header */}
       <div className="flex items-center justify-between px-3 py-3 border-b" style={{ borderColor: 'var(--border)' }}>
         <button onClick={onToggle} className="p-1.5 rounded-lg hover:bg-black/5 text-[var(--text-secondary)] transition">
@@ -122,7 +122,7 @@ function Sidebar({
 
       {/* Sidebar footer */}
       <div className="px-3 py-3 border-t text-xs text-[var(--text-muted)]" style={{ borderColor: 'var(--border)' }}>
-        Lyftr AI Chatbot
+        AI Chatbot
       </div>
     </div>
   );
@@ -359,7 +359,7 @@ function Chat() {
 
         {/* Test Tools Panel */}
         {showTestTools && (
-          <div className="border-b px-6 py-3 flex flex-wrap items-center gap-4 text-xs" style={{ borderColor: 'var(--border)', background: '#f5f0e8' }}>
+          <div className="border-b px-6 py-3 flex flex-wrap items-center gap-4 text-xs" style={{ borderColor: 'var(--border)', background: '#ddd5c8' }}>
             <div className="flex items-center gap-2">
               <label className="font-medium text-[var(--text-secondary)]">Simulate:</label>
               <select
@@ -517,9 +517,7 @@ function Chat() {
                 <IconSend />
               </button>
             </div>
-            <p className="text-center text-[10px] text-[var(--text-muted)] mt-2">
-              LLM Chatbot may produce inaccurate information. Verify important details.
-            </p>
+
           </div>
         </div>
       </div>

@@ -22,5 +22,5 @@ services:
       - key: CACHE_DIR
         value: "/data/cache"
       - key: LLM_MODEL
-        value: "gemini/gemini-2.0-flash"
+        value: "groq/openai/gpt-oss-20b"
     healthCheckPath: /health
